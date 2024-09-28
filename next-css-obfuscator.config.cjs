@@ -13,4 +13,5 @@ module.exports = {
     /_app-.*/,
     /__.*/,
   ],
+  logLevel: 'debug'
 };
