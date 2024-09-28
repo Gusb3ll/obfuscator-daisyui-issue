@@ -1,19 +1,36 @@
-import type { Config } from "tailwindcss";
+import daisyui from 'daisyui'
+import defaultTheme from 'daisyui/src/theming/themes'
+import { Config } from 'tailwindcss'
+
+const defaultColors = {
+  primary: '#0000FF',
+  secondary: '#3B82F6',
+}
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/components/**/*.{ts,tsx}',
+    './src/pages/**/*.{ts,tsx}',
+    './src/scenes/**/*.{ts,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        ...defaultColors,
       },
     },
   },
-  plugins: [],
-};
-export default config;
+  plugins: [daisyui],
+  daisyui: {
+    themes: [
+      {
+        easydonate: {
+          ...defaultTheme['dark'],
+          ...defaultColors,
+        },
+      },
+    ],
+  },
+}
+
+export default config
